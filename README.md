@@ -13,3 +13,5 @@ FT Vocab http://ft.com/vocabulary
 Searched http://visualizationuniverse.com/charts  
 Tools http://chartmaker.visualisingdata.com  
 Weird https://xeno.graphics 
+
+R Graphics Cookbook, 2nd edition https://r-graphics.org/
