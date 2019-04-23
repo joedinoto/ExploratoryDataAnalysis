@@ -15,3 +15,5 @@ Tools http://chartmaker.visualisingdata.com
 Weird https://xeno.graphics 
 
 R Graphics Cookbook, 2nd edition https://r-graphics.org/
+Tufte in R http://motioninsocial.com/tufte/
+  via https://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/
