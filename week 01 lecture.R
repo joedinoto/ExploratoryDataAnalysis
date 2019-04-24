@@ -113,4 +113,4 @@ title(main="Old Faithful Geyser Data")
 pdf(file="myplot.pdf") # Open graphics device
 with(faithful,plot(eruptions,waiting))
 title(main="Old Faithful Geyser Data")
-def.off() #close graphics device
+dev.off() #close graphics device
