@@ -110,7 +110,14 @@ library(datasets)
 with(faithful,plot(eruptions,waiting))
 title(main="Old Faithful Geyser Data")
 
+# Making a PDF
 pdf(file="myplot.pdf") # Open graphics device
 with(faithful,plot(eruptions,waiting))
 title(main="Old Faithful Geyser Data")
+dev.off() #close graphics device
+
+# Making a PNG
+with(faithful,plot(eruptions,waiting))
+title(main="Old Faithful Geyser Data")
+dev.copy(png,file="geyserplot.png") # open graphics device
 dev.off() #close graphics device
