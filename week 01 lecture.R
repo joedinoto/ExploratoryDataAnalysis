@@ -105,3 +105,12 @@ plot(x,y,type="n")
 par(mfrow=c(1,1))
 points(x[g=="male"],y[g=="male"],col="blue")
 points(x[g=="female"],y[g=="female"],col="red",pch=19)
+
+library(datasets)
+with(faithful,plot(eruptions,waiting))
+title(main="Old Faithful Geyser Data")
+
+pdf(file="myplot.pdf") # Open graphics device
+with(faithful,plot(eruptions,waiting))
+title(main="Old Faithful Geyser Data")
+def.off() #close graphics device
