@@ -21,3 +21,9 @@ Tufte in R http://motioninsocial.com/tufte/
 via https://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/
 
 How to make any plot in R http://r-statistics.co/ggplot2-Tutorial-With-R.html
+
+From data to viz (plot chooser) https://www.data-to-viz.com/#scatter
+
+Another chooser like the one above: https://medium.com/multiple-views-visualization-research-explained/multiple-views-on-how-to-choose-a-visualization-b3ffc99fcddc
+
+Direct link to PDF: http://experception.net/Franconeri_ExperCeptionDotNet_ChartChooser.pdf
