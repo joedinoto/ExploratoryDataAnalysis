@@ -27,3 +27,5 @@ From data to viz (plot chooser) https://www.data-to-viz.com/#scatter
 Another chooser like the one above: https://medium.com/multiple-views-visualization-research-explained/multiple-views-on-how-to-choose-a-visualization-b3ffc99fcddc
 
 Direct link to PDF: http://experception.net/Franconeri_ExperCeptionDotNet_ChartChooser.pdf
+
+Data Science with R: A Resource Compendium https://bookdown.org/martin_monkman/DataScienceResources_book/
