@@ -29,3 +29,7 @@ Another chooser like the one above: https://medium.com/multiple-views-visualizat
 Direct link to PDF: http://experception.net/Franconeri_ExperCeptionDotNet_ChartChooser.pdf
 
 Data Science with R: A Resource Compendium https://bookdown.org/martin_monkman/DataScienceResources_book/
+
+
+## PCA paper
+http://arxiv.org/pdf/1404.1100.pdf
