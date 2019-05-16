@@ -33,3 +33,5 @@ Data Science with R: A Resource Compendium https://bookdown.org/martin_monkman/D
 
 ## PCA paper
 http://arxiv.org/pdf/1404.1100.pdf
+
+SCCfiltered<- SCC[grepl("Coal",SCC$EI.Sector),]
