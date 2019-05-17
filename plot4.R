@@ -25,5 +25,22 @@ SCCfiltered<- SCC[regmatches(SCC$EI.Sector, regexpr("Coal", SCC$EI.Sector)),]
 
 coal <- filter(SCC, grepl("Coal",EI.Sector)) # dplyr needed for this
 coal$SCC <- as.character(coal$SCC) #change from factor to character
-coalstring <- coal$SCC #create vector
+coalstring <- coal$SCC #create vector of just coal codes
 NEIfiltered<- NEI[NEI$SCC %in% coalstring] # filter NEI to only coal-related items
+par(mfrow=c(1,1)) 
+boxplot(Emissions ~ year,NEIfiltered,xlab="year",ylab="emissions")
+yearmean<- NEIfiltered[,.(YearMean=mean(Emissions)),by=.(year)]
+plot(yearmean)
+
+
+par(mfrow=c(1,1)) 
+NEI1999<- NEI[NEI$year==1999]
+NEI2002<- NEI[NEI$year==2002]
+NEI2005<- NEI[NEI$year==2005]
+NEI2008<- NEI[NEI$year==2008]
+par(mfrow=c(4,1)) 
+hist(NEI1999$Emissions)
+rug(NEI1999$Emissions)
+hist(NEI2002$Emissions)
+hist(NEI2005$Emissions)
+hist(NEI2008$Emissions)

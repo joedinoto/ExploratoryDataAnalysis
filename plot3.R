@@ -7,10 +7,17 @@ unzip("data.zip")
 ## This first line will likely take a few seconds. Be patient!
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
-
 library(data.table) # data.table package, format NEI & SCC as data.tables
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
+
+# Of the four types of sources indicated by the type 
+# (point, nonpoint, onroad, nonroad) variable, which of these four sources 
+# have seen decreases in emissions from 1999–2008 for Baltimore City? 
+# Which have seen increases in emissions from 1999–2008? 
+# Use the ggplot2 plotting system to make a plot answer this question.
+
+
 # http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization
 library(ggplot2)
 fips<- NEI[,.(fipsMean = mean(Emissions)),by=.(year,type,fips)]
