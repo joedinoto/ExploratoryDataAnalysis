@@ -9,6 +9,8 @@ NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
 library(data.table) # data.table package, format NEI & SCC as data.tables
+library(dplyr)
+
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
@@ -19,3 +21,9 @@ SCC<- as.data.table(SCC)
 # https://github.com/DataScienceSpecialization/courses/blob/master/04_ExploratoryAnalysis/CaseStudy/script.R
 
 SCCfiltered<- SCC[grepl("Coal",SCC$EI.Sector),]
+SCCfiltered<- SCC[regmatches(SCC$EI.Sector, regexpr("Coal", SCC$EI.Sector)),]
+
+coal <- filter(SCC, grepl("Coal",EI.Sector)) # dplyr needed for this
+coal$SCC <- as.character(coal$SCC) #change from factor to character
+coalstring <- coal$SCC #create vector
+NEIfiltered<- NEI[NEI$SCC %in% coalstring] # filter NEI to only coal-related items
