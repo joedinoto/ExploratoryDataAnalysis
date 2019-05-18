@@ -35,3 +35,6 @@ Data Science with R: A Resource Compendium https://bookdown.org/martin_monkman/D
 http://arxiv.org/pdf/1404.1100.pdf
 
 SCCfiltered<- SCC[grepl("Coal",SCC$EI.Sector),]
+
+Extremely useful ggplot2 tutorial with lots of example graphs
+https://cedricscherer.netlify.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/
