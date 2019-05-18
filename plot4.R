@@ -20,11 +20,27 @@ SCC<- as.data.table(SCC)
 # Look up regular expressions 
 # look up how to merge data sets
 # https://github.com/DataScienceSpecialization/courses/blob/master/04_ExploratoryAnalysis/CaseStudy/script.R
+# boxplot(Emissions ~ year,NEIfiltered,xlab="year",ylab="emissions")
+# yearmean<- NEIfiltered[,.(YearMean=mean(Emissions)),by=.(year)]
+# plot(yearmean)
 
-coal <- filter(SCC, grepl("Coal",EI.Sector)) # dplyr needed for this
+coal <- filter(SCC, grepl("Coal",EI.Sector)) # use dplyr to filter only coal combustion from SCC
 coal$SCC <- as.character(coal$SCC) #change from factor to character
 coalstring <- coal$SCC #create vector of just coal codes
 NEIfiltered<- NEI[NEI$SCC %in% coalstring] # filter NEI to only coal-related items
-boxplot(Emissions ~ year,NEIfiltered,xlab="year",ylab="emissions")
-yearmean<- NEIfiltered[,.(YearMean=mean(Emissions)),by=.(year)]
-plot(yearmean)
+yeartotal <- NEIfiltered[,.(YearSum=sum(Emissions)),by=.(year)]
+
+# step 1 open png() device
+dev.print(png, file = "Plot4.png", width = 480, height = 480)
+png(file = "Plot4.png", bg = "transparent")
+# step 2 plot the function
+barplot(
+  (1/100000)*(yeartotal$YearSum), # Scale the sum by 100k
+  names = yeartotal$year,
+  ylim=c(0,6),
+  xlab="year",
+  ylab="PM2.5 emissions (100k tons)",
+  main="USA sum of all coal-combustion PM2.5 emissions"
+  )
+# step 3 close the png() device
+dev.off()

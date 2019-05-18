@@ -17,20 +17,34 @@ SCC<- as.data.table(SCC)
 
 # SCC$Short.Name "Motor vehicle"
 # Showing 1 to 18 of 20 entries, 15 total columns (filtered from 11,717 total entries)
-# SCC$EL.Sector "road gas"
+# SCC$EL.Sector "On-Road Gasoline"
 # Showing 1 to 18 of 629 entries, 15 total columns (filtered from 11,717 total entries)
 
+# boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions") #log10 scaled boxplot
+# plot(yeartotal) #plot only the mean for each year
+# boxplot(Emissions ~ SCC,NEIfiltered,xlab="SCC",ylab="emissions")
+# boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions",outline=FALSE) #no outliers
+# NEI5num<- fivenum(NEIfiltered$Emissions)
+# NEI5num
 
-roadgas <- filter(SCC, grepl("road gas",EI.Sector)) # dplyr needed for this
+roadgas <- filter(SCC, grepl("On-Road Gasoline",EI.Sector)) # dplyr needed for this
 roadgas$SCC <- as.character(roadgas$SCC) #change from factor to character
-roadgasstring <- coal$SCC #create vector of just road gasoline codes
-NEIfiltered<- NEI[NEI$SCC %in% roadgasstring] # filter NEI to only road gasonline-related items
-NEIfiltered<- NEI[NEI$Emissions>0 & NEI$fips==24510,] # filter NEI to emissions>0 and Bmore only
-boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions") #log10 scaled boxplot
-yearmean<- NEIfiltered[,.(YearMean=mean(Emissions)),by=.(year)] # mean of emissions by year
-plot(yearmean) #plot only the mean for each year
-boxplot(Emissions ~ SCC,NEIfiltered,xlab="SCC",ylab="emissions")
-NEI5num<- fivenum(NEIfiltered$Emissions)
-NEI5num
+roadgasstring <- roadgas$SCC #create vector of just road gasoline codes
+NEIfiltered2<- NEI[NEI$SCC %in% roadgasstring] # filter NEI to only road gasonline-related items
+NEIfiltered2<- NEIfiltered2[NEIfiltered2$Emissions>=0 & NEIfiltered2$fips==24510,] # filter NEI to emissions>0 and Bmore only
+yeartotal2<- NEIfiltered2[,.(YearSum2=sum(Emissions)),by=.(year)] # sum of emissions by year
 
-boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions",outline=FALSE) #no outliers
+# step 1 open png() device
+dev.print(png, file = "Plot5.png", width = 480, height = 480)
+png(file = "Plot5.png", bg = "transparent")
+# step 2 plot the function
+barplot(
+  (1)*(yeartotal2$YearSum2),
+  names = yeartotal2$year,
+  ylim=c(0,145),
+  xlab="year",
+  ylab="PM2.5 emissions (tons)",
+  main="Baltimore City sum of PM2.5 emissions from motor vehicles"
+) 
+# step 3 close the png() device
+dev.off()
