@@ -1,5 +1,6 @@
 # ExploratoryDataAnalysis
 4th course in the JHU Coursera Data Science specialization 
+Final Project [SixPlots.md][SixPlots.md]
 
 # Useful links
 https://twitter.com/YuriEngelhardt/status/988111328937238533
