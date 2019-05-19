@@ -12,11 +12,7 @@ library(data.table) # data.table package, format NEI & SCC as data.tables
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
-# boxplot(Emissions ~ year,NEI,xlab="year",ylab="emissions") # Giant outlier in 2002
-# yearmean<- NEI[,.(YearMean=mean(Emissions)),by=.(year)]
-# plot(yearmean)
-
-# What if //total// is italicized b/c they want the SUM?
+# I am interperting "total" to mean "SUM".
 yearsum<- NEI[,.(YearSum=sum(Emissions)),by=.(year)]
 
 # step 1 open png() device
@@ -28,7 +24,7 @@ barplot(
   names = yearsum$year,
   ylim=c(0,8),
   xlab="year",
-  ylab="PM2.5 emissions (1 million tons)",
+  ylab="PM2.5 emissions (millions of tons)",
   main="USA sum of all PM2.5 emissions from all sources by year"
 ) 
 # step 3 close the png() device

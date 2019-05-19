@@ -13,17 +13,7 @@ library(dplyr)
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
-# Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
-
-# SCC - El.Sector "Coal"
-# Showing 99 to 99 of 99 entries, 15 total columns (filtered from 11,717 total entries)
-# Look up regular expressions 
-# look up how to merge data sets
-# https://github.com/DataScienceSpecialization/courses/blob/master/04_ExploratoryAnalysis/CaseStudy/script.R
-# boxplot(Emissions ~ year,NEIfiltered,xlab="year",ylab="emissions")
-# yearmean<- NEIfiltered[,.(YearMean=mean(Emissions)),by=.(year)]
-# plot(yearmean)
-
+# sum of all coal combustion sources
 coal <- filter(SCC, grepl("Coal",EI.Sector)) # use dplyr to filter only coal combustion from SCC
 coal$SCC <- as.character(coal$SCC) #change from factor to character
 coalstring <- coal$SCC #create vector of just coal codes

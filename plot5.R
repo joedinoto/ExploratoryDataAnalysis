@@ -13,20 +13,7 @@ library(dplyr)
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
-# 5 How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
-
-# SCC$Short.Name "Motor vehicle"
-# Showing 1 to 18 of 20 entries, 15 total columns (filtered from 11,717 total entries)
-# SCC$EL.Sector "On-Road Gasoline"
-# Showing 1 to 18 of 629 entries, 15 total columns (filtered from 11,717 total entries)
-
-# boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions") #log10 scaled boxplot
-# plot(yeartotal) #plot only the mean for each year
-# boxplot(Emissions ~ SCC,NEIfiltered,xlab="SCC",ylab="emissions")
-# boxplot(log10(Emissions) ~ year,NEIfiltered,xlab="year",ylab="emissions",outline=FALSE) #no outliers
-# NEI5num<- fivenum(NEIfiltered$Emissions)
-# NEI5num
-
+# sum of all motor vehicle sources
 roadgas <- filter(SCC, grepl("On-Road Gasoline",EI.Sector)) # dplyr needed for this
 roadgas$SCC <- as.character(roadgas$SCC) #change from factor to character
 roadgasstring <- roadgas$SCC #create vector of just road gasoline codes

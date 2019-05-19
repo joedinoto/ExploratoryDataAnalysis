@@ -12,14 +12,6 @@ library(data.table) # data.table package, format NEI & SCC as data.tables
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
-# https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf
-
-# interpreting //total// as "mean of all emissions"
-# NEI<- as.data.table(NEI)
-# fips<- NEI[,.(fipsMean = mean(Emissions)),by=.(year,fips)]
-# bmore<- fips[fips==24510]
-# plot(bmore$year,bmore$fipsMean)
-
 # interpreting //total// as "sum of all emissions"
 fipstotal<- NEI[,.(fipsSum = sum(Emissions)),by=.(year,fips)]
 bmore<- fipstotal[fips==24510]

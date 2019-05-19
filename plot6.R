@@ -10,17 +10,17 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 library(data.table) # data.table package, format NEI & SCC as data.tables
 library(dplyr)
+library(ggplot2)
 NEI<- as.data.table(NEI)
 SCC<- as.data.table(SCC)
 
-
+# sum of all motor vehicle sources in each city
 roadgas <- filter(SCC, grepl("On-Road Gasoline",EI.Sector)) # dplyr needed for this
 roadgas$SCC <- as.character(roadgas$SCC) #change from factor to character
 roadgasstring <- roadgas$SCC #create vector of just road gasoline codes
 NEIfiltered3<- NEI[NEI$SCC %in% roadgasstring] # filter NEI to only road gasonline-related items
 NEIfiltered3<- NEIfiltered3[fips %in% c("24510","06037")] # filter NEI to LA County and Bmore only
 yeartotal3<- NEIfiltered3[,.(YearSum3=sum(Emissions)),by=.(year,fips)] # sum of emissions by year and fips
-
 names(yeartotal3)<- c("year","city","YearSum3")
 yeartotal3$city <- gsub("24510","Baltimore City", yeartotal3$city)
 yeartotal3$city <- gsub("06037","LA County", yeartotal3$city)
