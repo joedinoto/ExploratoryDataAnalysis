@@ -110,7 +110,7 @@ dev.off()
 ```
 
 ### Plot 3 Output
-~[plot3](Plot3.png)
+![plot3](Plot3.png)
 
 ## Question 4
 Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
